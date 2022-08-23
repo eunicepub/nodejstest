@@ -2,7 +2,7 @@ resources:
   repositories:
     - repository: templates
       type: git
-      name: eunicebiz/DeployToLinux
+      name: DeployToLinux
       ref: 'refs/heads/live'
 
 trigger:
