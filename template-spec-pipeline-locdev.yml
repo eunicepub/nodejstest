@@ -3,7 +3,7 @@ resources:
     - repository: templates
       type: git
       name: DeployToLinux/DeployToLinux
-      ref: 'refs/heads/main'
+      ref: 'refs/main'
 
 trigger: none
 
