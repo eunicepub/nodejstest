@@ -1,5 +1,12 @@
-name: arm-template-yml
+resources:
+  repositories:
+    - repository: eunicepub
+      type: git
+      name: DeployToLinux/DeployToLinux
+      ref: 'refs/heads/live'
+
 trigger: none
+
 variables:
   vmImage: 'windows-2019'
   solutionPath: ''
