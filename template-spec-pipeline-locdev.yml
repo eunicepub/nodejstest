@@ -1,18 +1,5 @@
-resources:
-  repositories:
-    - repository: templates
-      type: git
-      name: DeployToLinux/DeployToLinux
-      ref: 'refs/heads/live'
-
-trigger:
-  branches:
-    include:
-    - live
-  paths:
-    include:
-      - SwapSlots/*
-
+name: arm-template-yml
+trigger: none
 variables:
   vmImage: 'windows-2019'
   solutionPath: ''
