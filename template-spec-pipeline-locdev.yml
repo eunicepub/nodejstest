@@ -1,6 +1,6 @@
 resources:
   repositories:
-    - repository: eunicepub
+    - repository: templates
       type: git
       name: DeployToLinux/DeployToLinux
       ref: 'refs/heads/live'
