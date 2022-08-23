@@ -2,7 +2,7 @@ resources:
   repositories:
     - repository: templates
       type: git
-      name: DeployToLinux
+      name: eunicepub/nodejstest
       ref: 'refs/heads/live'
 
 trigger:
