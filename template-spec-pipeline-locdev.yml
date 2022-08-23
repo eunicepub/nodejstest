@@ -2,7 +2,7 @@ resources:
   repositories:
     - repository: templates
       type: git
-      name: Engineering/DevOpsBuildTemplates
+      name: eunicepub/nodejstest
       ref: 'refs/heads/live'
 
 trigger:
