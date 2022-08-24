@@ -1,0 +1,32 @@
+parameters:
+  subscriptionName: ''
+  resourceGroupName: ''
+  resourceGroupLocation: ''
+  templateSpecName: ''
+  templateSpecVersion: ''
+  templateSpecFileLocation: ''
+
+steps:
+- task: AzureCLI@2
+  displayName: 'Create Resource Group'
+  inputs:
+    azureSubscription: ${{ parameters.subscriptionName }}
+    scriptType: 'ps'
+    scriptLocation: inlineScript
+    inlineScript: |
+      az group create `
+        --name ${{ parameters.resourceGroupName }} `
+        --location ${{ parameters.resourceGroupLocation }}
+- task: AzureCLI@2
+  displayName: 'Deploy Template Spec'
+  inputs:
+    azureSubscription: ${{ parameters.subscriptionName }}
+    scriptType: 'ps'
+    scriptLocation: inlineScript
+    inlineScript: |
+      az ts create `
+        --name ${{ parameters.templateSpecName }} `
+        --version ${{ parameters.templateSpecVersion }} `
+        --resource-group ${{ parameters.resourceGroupName }} `
+        --location ${{ parameters.resourceGroupLocation }} `
+        --template-file ${{ parameters.templateSpecFileLocation }}

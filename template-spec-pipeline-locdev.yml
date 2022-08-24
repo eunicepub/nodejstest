@@ -27,7 +27,7 @@ stages:
         deploy:
           steps:
           - checkout: self
-          - template: stages/steps/deployArmTemplateSpec.yml@templates
+          - template: deployArmTemplateSpec.yml@templates
             parameters:
               subscriptionName: 'Visual Studio Enterprise Subscription'
               resourceGroupName: 'learnsharedarm-dev'
