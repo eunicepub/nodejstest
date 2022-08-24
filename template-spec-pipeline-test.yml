@@ -1,0 +1,37 @@
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: DeployToLinux/DeployToLinux
+      ref: 'refs/heads/main'
+
+trigger: none
+
+variables:
+  vmImage: 'windows-2019'
+  solutionPath: ''
+  armTemplatePath: 'SwapSlots'
+  templateSpecVersion: '1.0.0'
+
+stages:
+- stage: DeployDev
+  displayName: 'DEV (CORP)'
+  jobs:
+  - deployment: DeployARM
+    displayName: 'Deploy ARM template spec'
+    environment: Dev
+    pool:
+      vmImage: $(vmImage)
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - checkout: self
+          - template: deployArmTemplateSpec.yml@templates
+            parameters:
+              subscriptionName: 'Visual Studio Enterprise Subscription'
+              resourceGroupName: 'learnsharedarm-dev'
+              resourceGroupLocation: 'centralus'
+              templateSpecName: 'swapslots'
+              templateSpecVersion: $(templateSpecVersion)
+              templateSpecFileLocation: '$(Build.Repository.LocalPath)\$(armTemplatePath)\swapslots.json'
